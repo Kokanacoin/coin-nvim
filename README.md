@@ -61,7 +61,7 @@ Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
 虽然`lazy.nvim`已经为我们提供了很多便捷的操作，但还是要自己配置。下面是我自己做的仓库，里面添加了一些对`lazy.nvim`的修改，其中包括一些特定语言的语法支持。
 
 ```shell
-None
+git clone https://github.com/Kokanacoin/coin-nvim $env:LOCALAPPDATA\nvim
 ```
 
 ## Ⅱ 配置
