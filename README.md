@@ -190,6 +190,36 @@ lspconfig.pyright.setup({
 })
 ```
 
+### Vue
+
+这里通过非混合模式来配置`Vue`的`lsp`。
+
+- 首先通过`npm`安装一些环境
+
+```shell
+npm install -g @vue/language-server
+npm install -g @vue/typescript-plugin 
+```
+
+- 在`init.lua`配置
+
+```lua
+lspconfig.volar.setup {
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    init_options = {
+        vue = {
+            hybridMode = false,
+        },
+    },
+}
+```
+
+
+
+
+
+
+
 ## Ⅳ 一些坑
 
 ### Windows环境下nvim-treesitter，找不到so文件
