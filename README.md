@@ -9,7 +9,7 @@
 - [x] Python
 - [x] Golang
 - [ ] Java
-- [x] Vue
+- [x] Vue（有一些小bug）
 
 ## Ⅰ 安装
 
@@ -190,7 +190,7 @@ lspconfig.pyright.setup({
 })
 ```
 
-### Vue
+### Vue（有一些小bug）
 
 这里通过非混合模式来配置`Vue`的`lsp`。
 
