@@ -9,7 +9,7 @@
 - [x] Python
 - [x] Golang
 - [ ] Java
-- [ ] Vue
+- [x] Vue
 
 ## Ⅰ 安装
 
