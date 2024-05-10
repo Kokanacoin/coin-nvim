@@ -67,11 +67,11 @@ lspconfig.gopls.setup({
 --          npm install -g @vue/language-server
 --          npm install -g @vue/typescript-plugin
 -- -----------------------------------------------------------------------------------------------------
-lspconfig.volar.setup {
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-    init_options = {
-        vue = {
-            hybridMode = false,
-        },
-    },
-}
+-- lspconfig.volar.setup {
+--     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+--     init_options = {
+--         vue = {
+--             hybridMode = false,
+--         },
+--     },
+-- }
