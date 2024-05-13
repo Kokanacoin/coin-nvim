@@ -19,6 +19,8 @@ vim.lsp.set_log_level("debug")
 -- -----------------------------------------------------------------------------------------------------
 -- 获取 Conda 环境路径
 
+local lspconfig = require("lspconfig")
+
 local function get_conda_path()
   local handle = io.popen("conda info --json")
   local result = handle:read("*a")
@@ -81,3 +83,40 @@ lspconfig.volar.setup({
     },
   },
 })
+
+-- -----------------------------------------------------------------------------------------------------
+local dap = require("dap")
+
+-- 定义获取 Conda 路径的函数
+local function get_conda_path()
+  local handle = io.popen("conda info --json")
+  local result = handle:read("*a")
+  handle:close()
+  local path = result:match('"default_prefix": "(.-)"'):gsub("/", "\\")
+  return path, path .. "\\python"
+end
+
+-- 获取 Conda 的默认环境路径和 Python 解释器路径
+local conda_path, python_path = get_conda_path()
+
+-- 设置 DAP 的适配器
+dap.adapters.python = {
+  type = "executable",
+  command = python_path, -- 使用 Conda 环境中的 Python
+  args = { "-m", "debugpy.adapter" },
+}
+
+-- 配置 Python 调试
+dap.configurations.python = {
+  {
+    name = "Launch",
+    type = "python",
+    request = "launch",
+    program = "${file}",
+    pythonPath = function()
+      -- 动态获取当前环境的 Python 解释器路径
+      local _, python_path = get_conda_path()
+      return python_path
+    end,
+  },
+}
