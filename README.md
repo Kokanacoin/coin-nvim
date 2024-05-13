@@ -224,15 +224,15 @@ lspconfig.volar.setup {
 
 ### Windows环境下nvim-treesitter，找不到so文件
 
-这个问题的原因是有一些插件需要在`linux`运行，他们会自动找`so`文件，但是`windows`上只有`dll`。最简单解决办法就是换一个`gcc`就可以了。
-
-下载并且安装这个[MinGW](https://winlibs.com/)
+>这个问题的原因是有一些插件需要在`linux`运行，他们会自动找`so`文件，但是`windows`上只有`dll`。最简单解决办法就是换一个`gcc`就可以了。
+>
+>下载并且安装这个[MinGW](https://winlibs.com/)
 
 ### Pyright与volar冲突
 
-在同时安装`pyright`(py支持)与`volar`(vue支持)的时候，会发生一些冲突，导致自动审核代码插件在`ts`脚本发生错误。解决办法是对每种语言的`lsp`限制`filetype`,让一些文件仅仅使用自己的语言的插件。
-
-不过经测试，`pyright`的代码检测能力也可以应用在go上，在别的地方用不了是真的遗憾，有问题可以联系我。
+> 在同时安装`pyright`(py支持)与`volar`(vue支持)的时候，会发生一些冲突，导致自动审核代码插件在`ts`脚本发生错误。解决办法是对每种语言的`lsp`限制`filetype`,让一些文件仅仅使用自己的语言的插件。
+>
+> 不过经测试，`pyright`的代码检测能力也可以应用在go上，在别的地方用不了是真的遗憾，有问题可以联系我。
 
 ## 附录：中文键位对应表
 
