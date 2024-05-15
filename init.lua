@@ -15,18 +15,18 @@ local lsp = {
 
     -- Golang LSP (gopls) 安装命令：
     --          go install golang.org/x/tools/gopls@latest
-    go = true,
+    go = false,
 
     -- Vue LSP (volar) 安装命令：
     --          npm install -g @vue/language-server
     --          npm install -g @vue/typescript-plugin
-    vue = true,
+    vue = false,
 
     -- Python LSP (Pyright) 安装命令：
     --          npm install -g pyright
-    python = true,
+    python = false,
 }
--- 插件开关变量
+-- 插件开关变量dc
 local plugin = {
   dap = true,
 }
