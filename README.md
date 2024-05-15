@@ -10,16 +10,23 @@
 - [x] Golang
 - [x] Vue
 - [ ] Java
+- [x] Javascript
+- [x] Typescript
+- [ ] C/C++
 
 ## Ⅰ 安装
 
 ### Neovim安装
 
+#### 
+
 **Neovim** 是一个基于 Vim 的文本编辑器，旨在改进 Vim 并添加新功能，同时保持与 Vim 的兼容性。Neovim 试图简化 Vim 的代码基础，使得开发和维护更加容易，并且支持现代功能，如异步 I/O、插件运行时和改进的脚本语言支持。
 
-**Windows**
+详细安装请查看[传送门](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 
-- 通过**Winget**安装
+#### Windows
+
+- 通过**Winget**安装，目前推荐稳定版`v0.9.5`
 
 ```shell
 winget install Neovim.Neovim
@@ -31,7 +38,7 @@ winget install Neovim.Neovim
 choco install neovim --pre
 ```
 
-**MacOS or Linux**
+#### MacOS or Linux
 
 ```shell
 brew install neovim
@@ -66,7 +73,29 @@ git clone https://github.com/Kokanacoin/coin-nvim $env:LOCALAPPDATA\nvim
 
 ## Ⅱ 配置
 
-这里需要下载一个终端来运行`nvim`，原生的终端是可以，不过有些显示会出现问题。这里官方推荐了一些，我直接引用过来，我在使用的是`Wezterm`
+### coin-nvim全局配置
+
+在`init.lua`中，可以配置一些`vim`原生的配置，以及本仓库实现的一些`lsp`、`plugin`配置的启用。
+
+在配置文件中有以下开关，可以自行配置启用或者禁用。
+
+```LUA
+local lsp = {
+    go = true,
+    vue = true,
+    python = true,
+}
+local plugin = {
+  dap = true,
+}
+```
+
+另外如果需要自行增加的话，在项目目录中的`lua/coin-config/lang`中可以添加自己的语言支持，例如添加了`rust.lua`，在`init.lua`中使用`rust = true`就可以注册。`plugin`文件在`lua/coin-config/plugin`下添加。注册与`lsp`上述同理。
+
+### 终端
+
+这里需要下载一个终端来运行`nvim`，原生的终端是可以，不过有些显示会出现问题，(需要支持`Nerd Font v3.0 or greater`字体)，没有也可以不过一些图标显示不了。这里官方推荐了一些，我直接引用过来，我在使用的是`Wezterm`
+
 >- [kitty](https://github.com/kovidgoyal/kitty) ***(Linux & Macos)\***
 >- [wezterm](https://github.com/wez/wezterm) ***(Linux, Macos & Windows)\***
 >- [alacritty](https://github.com/alacritty/alacritty) ***(Linux, Macos & Windows)\***
@@ -75,6 +104,28 @@ git clone https://github.com/Kokanacoin/coin-nvim $env:LOCALAPPDATA\nvim
 所有的`nvim`的配置文件都在安装目录下的`init.lua`脚本中配置。
 
 另外有时候可能需要配置一下终端的显示，比如让`nvim`能够**全屏显示**，**字体大小**等等，有需要可以自行配置。
+
+#### Wezterm终端
+
+官方传送门：https://wezfurlong.org/wezterm/installation.html
+
+如果下面代码安装不好用就在上面官网看看
+
+- **Windows**
+
+```shell
+# winget 用户
+winget install wez.wezterm
+
+# Chocolatey 用户
+choco install wezterm -y
+```
+
+- **MacOS**
+
+```SHELL	
+brew install --cask wezterm
+```
 
 下面是`wezterm`的配置文件的路径
 
@@ -108,6 +159,8 @@ return {
   use_fancy_tab_bar = false,
 }
 ```
+
+
 
 ## Ⅲ 语言支持
 
@@ -216,10 +269,6 @@ lspconfig.volar.setup {
 
 
 
-
-
-
-
 ## Ⅳ 一些坑
 
 ### Windows环境下nvim-treesitter，找不到so文件
@@ -233,6 +282,14 @@ lspconfig.volar.setup {
 > 在同时安装`pyright`(py支持)与`volar`(vue支持)的时候，会发生一些冲突，导致自动审核代码插件在`ts`脚本发生错误。解决办法是对每种语言的`lsp`限制`filetype`,让一些文件仅仅使用自己的语言的插件。
 >
 > 不过经测试，`pyright`的代码检测能力也可以应用在go上，在别的地方用不了是真的遗憾，有问题可以联系我。
+
+### 使用nvim-dap对虚拟环境进行调试
+
+在这个目录下已经配置好了dap的相应配置，在`base`环境下，可以直接`<learder>dc`进行调试，不过在`conda`的虚拟环境中就会出现一些问题。为了解决这个，只需要在这个虚拟环境中按一个包就好
+
+```shell
+pip install debugpy
+```
 
 ## 附录：中文键位对应表
 
