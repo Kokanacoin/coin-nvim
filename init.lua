@@ -8,31 +8,28 @@ vim.opt.tabstop = 4 -- 设置 tab 的显示宽度为 4 个字符
 vim.opt.shiftwidth = 4 -- 设置缩进宽度为 4 个空格
 -------------------------------------------------------------------------------
 
-
 -------------------------------------------------------------------------------
 -- 一些开关，用来控制是否启动一些插件的
 local lsp = {
 
-    -- Golang LSP (gopls) 安装命令：
-    --          go install golang.org/x/tools/gopls@latest
-    go = false,
+  -- Golang LSP (gopls) 安装命令：
+  --          go install golang.org/x/tools/gopls@latest
+  go = false,
 
-    -- Vue LSP (volar) 安装命令：
-    --          npm install -g @vue/language-server
-    --          npm install -g @vue/typescript-plugin
-    vue = false,
+  -- Vue LSP (volar) 安装命令：
+  --          npm install -g @vue/language-server
+  --          npm install -g @vue/typescript-plugin
+  vue = false,
 
-    -- Python LSP (Pyright) 安装命令：
-    --          npm install -g pyright
-    python = false,
+  -- Python LSP (Pyright) 安装命令：
+  --          npm install -g pyright
+  python = false,
 }
 -- 插件开关变量dc
 local plugin = {
-  dap = true,
+  dap = false,
 }
 -------------------------------------------------------------------------------
-
-
 
 -- 引入通用函数
 local tools = require("coin-config.tools")
